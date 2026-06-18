@@ -84,7 +84,7 @@ log "Using Nvidia driver version: ${NVIDIA_DRIVER_VERSION}"
 
 # Build the official .run installer URL
 # Format: https://us.download.nvidia.com/XFree86/Linux-x86_64/<version>/NVIDIA-Linux-x86_64-<version>.run
-NVIDIA_RUN_URL="https://us.download.nvidia.com/XFree86/Linux-x86_64/${NVIDIA_DRIVER_VERSION}/NVIDIA-Linux-x86_64-${NVIDIA_DRIVER_VERSION}.run"
+NVIDIA_RUN_URL="https://us.download.nvidia.com/tesla/${NVIDIA_DRIVER_VERSION}/NVIDIA-Linux-x86_64-${NVIDIA_DRIVER_VERSION}.run"
 NVIDIA_RUN_FILE="/tmp/NVIDIA-Linux-x86_64-${NVIDIA_DRIVER_VERSION}.run"
 
 log "Downloading Nvidia driver installer: ${NVIDIA_RUN_URL}"

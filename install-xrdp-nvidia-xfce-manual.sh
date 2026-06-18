@@ -108,12 +108,12 @@ for grp in video tty render; do
 done
 
 # ---- 4. Install CUDA (Nvidia) ----
-log "Installing CUDA"
-cd ~
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
-dpkg -i cuda-keyring_1.1-1_all.deb
-apt-get update
-apt-get -y install cuda
+#log "Installing CUDA"
+#cd ~
+#wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+#dpkg -i cuda-keyring_1.1-1_all.deb
+#apt-get update
+#apt-get -y install cuda
 
 # ---- 5. Base build dependencies ----
 log "Installing base build dependencies"

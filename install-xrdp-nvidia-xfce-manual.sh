@@ -42,11 +42,6 @@ usermod -aG sudo "$RDP_USER"
 echo "${RDP_USER} ALL=(ALL) NOPASSWD:ALL" > "/etc/sudoers.d/${RDP_USER}"
 chmod 440 "/etc/sudoers.d/${RDP_USER}"
 
-# Add user to GPU / input groups
-usermod "$RDP_USER" -a -G video
-usermod "$RDP_USER" -a -G tty
-usermod "$RDP_USER" -a -G render
-
 # ---- 2. System update ----
 log "Updating system"
 apt-get -y update
@@ -104,6 +99,13 @@ log "Installing Nvidia driver (no kernel module, no UI)"
 echo 1 | "$NVIDIA_RUN_FILE" --no-kernel-module --ui=none
 
 rm -f "$NVIDIA_RUN_FILE"
+
+# Add user to GPU / input groups now that the driver has created them.
+# Create any group that still doesn't exist (e.g. on minimal installs).
+for grp in video tty render; do
+    getent group "$grp" &>/dev/null || groupadd --system "$grp"
+    usermod -a -G "$grp" "$RDP_USER"
+done
 
 # ---- 4. Install CUDA (Nvidia) ----
 log "Installing CUDA"

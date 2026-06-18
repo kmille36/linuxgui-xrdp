@@ -116,6 +116,11 @@ done
 #apt-get -y install cuda
 
 # ---- 5. Base build dependencies ----
+log "Installing some packages dev"
+add-apt-repository universe -y
+add-apt-repository multiverse -y
+dpkg --add-architecture i386
+apt install -y thunar htop nvtop pciutils xvkbd feh p7zip-full p7zip-rar xfce4-terminal libc6:amd64 libc6:i386 libegl1:amd64 libegl1:i386 libgbm1:amd64 libgbm1:i386 libgl1-mesa-dri:amd64 libgl1-mesa-dri:i386 libgl1:amd64 libgl1:i386 xvfb x11-xserver-utils libvulkan1 dbus-x11 mesa-utils pulseaudio xorg xserver-xorg x11-utils x11-apps
 log "Installing base build dependencies"
 apt-get -y install \
     git wget curl python3 python3-pip \
